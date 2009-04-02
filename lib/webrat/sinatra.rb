@@ -42,7 +42,7 @@ module Webrat
 
       def set_cookies
         if set_cookie = @browser.response.headers['Set-Cookie']
-          @cookies << set_cookie
+          @cookies.unshift set_cookie
         end
       end
 

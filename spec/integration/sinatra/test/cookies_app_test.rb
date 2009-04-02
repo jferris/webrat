@@ -9,5 +9,8 @@ class MyCookiesAppTest < Test::Unit::TestCase
     click_link "set two"
     assert response_body.include?('one = set'), response_body
     assert response_body.include?('two = set'), response_body
+    click_link "overwrite two"
+    assert response_body.include?('one = set'), response_body
+    assert response_body.include?('two = overwritten'), response_body
   end
 end

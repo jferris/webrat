@@ -12,7 +12,7 @@ require File.expand_path('./lib/webrat.rb')
 ##############################################################################
 spec = Gem::Specification.new do |s|
   s.name         = "webrat"
-  s.version      = Webrat::VERSION
+  s.version      = "#{Webrat::VERSION}.0.#{Time.now.to_i}"
   s.platform     = Gem::Platform::RUBY
   s.author       = "Bryan Helmkamp"
   s.email        = "bryan" + "@" + "brynary.com"

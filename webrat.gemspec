@@ -1,7 +1,7 @@
 --- !ruby/object:Gem::Specification 
 name: webrat
 version: !ruby/object:Gem::Version 
-  version: 0.4.3
+  version: 0.4.3.0.1238640835
 platform: ruby
 authors: 
 - Bryan Helmkamp

@@ -12,6 +12,7 @@ module Webrat
 
       app = context.respond_to?(:app) ? context.app : Sinatra::Application
       @browser = Sinatra::TestHarness.new(app)
+      @cookies = []
     end
 
     %w(get head post put delete).each do |verb|
@@ -22,7 +23,9 @@ module Webrat
             data
           end
           headers["HTTP_HOST"] = "www.example.com"
+          headers["HTTP_COOKIE"] = @cookies.join(',')
           @browser.#{verb}(path, params, headers)
+          set_cookies
         end
       RUBY
     end
@@ -36,6 +39,12 @@ module Webrat
     end
 
     private
+
+      def set_cookies
+        if set_cookie = @browser.response.headers['Set-Cookie']
+          @cookies << set_cookie
+        end
+      end
 
       def response
         @browser.response

@@ -33,6 +33,13 @@ spec = Gem::Specification.new do |s|
   s.rubyforge_project = "webrat"
 end
 
+desc "Generate a gemspec file"
+task :gemspec do
+  File.open("#{spec.name}.gemspec", 'w') do |f|
+    f.write spec.to_yaml
+  end
+end
+
 Rake::GemPackageTask.new(spec) do |package|
   package.gem_spec = spec
 end

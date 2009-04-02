@@ -7,8 +7,8 @@ get "/get" do
   erb :get, :locals => { :cookies => request.cookies }
 end
 
-get %r{/set/(.*)} do |key|
-  response.set_cookie(key, 'set')
+get %r{/set/(.*)/(.*)} do |key, value|
+  response.set_cookie(key, value)
   redirect '/get'
 end
 
@@ -27,5 +27,6 @@ __END__
 
 one = <%= cookies['one'] %>
 two = <%= cookies['two'] %>
-<a href="/set/one">set one</a>
-<a href="/set/two">set two</a>
+<a href="/set/one/set">set one</a>
+<a href="/set/two/set">set two</a>
+<a href="/set/two/overwritten">overwrite two</a>
